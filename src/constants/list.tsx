@@ -9,6 +9,8 @@ import { Store } from "model/store"
 import User from "model/user"
 import ROUTE_NAME from "routes/name"
 import Compare from "utils/compare"
+import Constants from "./constants"
+import Validation from "utils/validation"
 
 export const STORE_COLUMN_LIST: ColumnsType<Store> = [
   {
@@ -223,9 +225,17 @@ export const INPUT_LIST_ADD_USER: ModalFormProps["inputList"] = Object.keys(
 export const INPUT_LIST_RESET_PASSWORD: ModalFormProps["inputList"] = [
   {
     label: Language.userProfile.password,
-    name: "password",
+    name: Constants.FIELD_NAME.PASSWORD,
     rules: [
       { required: true, message: Language.placeholder.thisFieldIsRequired },
+    ],
+  },
+  {
+    label: Language.userProfile.confirmPassword,
+    name: Constants.FIELD_NAME.CONFIRM_PASSWORD,
+    rules: [
+      { required: true, message: Language.placeholder.thisFieldIsRequired },
+      Validation.validateConfirmPassword,
     ],
   },
 ]

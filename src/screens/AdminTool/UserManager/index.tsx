@@ -6,6 +6,7 @@ import ModalConfirm from "components/Modal/ModalConfirm"
 import ModalForm from "components/Modal/ModalForm"
 import Table from "components/Table"
 import {
+  INPUT_LIST_RESET_PASSWORD,
   INPUT_LIST_ADD_USER as INPUT_LIST_USER_PROFILE,
   USER_COLUMN_LIST,
 } from "constants/list"
@@ -28,12 +29,26 @@ const UserManagement: React.FunctionComponent<UserManagementProps> = () => {
 
   const [isOpenResetPassword, setOpenResetPassword] = useState(false)
   const [resetPasswordForm] = Form.useForm()
+  const [userResetPassword, setUserResetingPassword] = useState<User | null>(
+    null
+  )
 
   const onToggleActiveUser = (user: User) => () => {
     setOpenActiveUser(true)
     setActiveUser(user)
   }
-  const onResetPassword = (user: User) => () => console.log(user)
+  const onResetPassword = (user: User) => () => {
+    setUserResetingPassword(user)
+    setOpenResetPassword(true)
+  }
+  const onCancelResetPassword = () => {
+    resetPasswordForm.resetFields()
+    setOpenResetPassword(false)
+  }
+  const onFinishResetPassword = () => {
+    resetPasswordForm.resetFields()
+    setOpenResetPassword(false)
+  }
 
   const onClickAddUser = () =>
     setOpenAddUser((prevOpenAddUser) => !prevOpenAddUser)
@@ -200,6 +215,17 @@ const UserManagement: React.FunctionComponent<UserManagementProps> = () => {
             )
           : ""}
       </ModalConfirm>
+
+      <ModalForm
+        title={Language.format?.(Language.popUp.resetPasswordFor, {
+          fullName: userResetPassword?.fullName,
+        })}
+        inputList={INPUT_LIST_RESET_PASSWORD}
+        open={isOpenResetPassword}
+        onCancel={onCancelResetPassword}
+        onFinish={onFinishResetPassword}
+        form={resetPasswordForm}
+      />
     </Space>
   )
 }
