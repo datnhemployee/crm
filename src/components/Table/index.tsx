@@ -25,7 +25,7 @@ const Table: React.FunctionComponent<TableProps> = (props) => {
         <ThemeTable
           pagination={{ position: ["bottomCenter"] }}
           {...props}
-          scroll={{ x: 1500, y: 500 }}
+          scroll={{ x: 1500, y: 350 }}
         />
       }
     />

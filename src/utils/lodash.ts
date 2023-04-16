@@ -1,4 +1,5 @@
-const deepClone = (obj: object) => JSON.parse(JSON.stringify(obj))
+const deepClone = <O extends Object>(obj: O): O =>
+  JSON.parse(JSON.stringify(obj))
 
 const Lodash = {
   deepClone,

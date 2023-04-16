@@ -17,12 +17,30 @@ const en = {
     adminToolsUploadCenter: "Upload Center",
   },
 
+  obj: {
+    keyword: "Keyword",
+  },
+
+  action: {
+    addNew: "Add New {{obj}}",
+    export: "Export {{obj}}",
+    map: "Map {{obj}}",
+    search: "Search",
+    uploadFile: "Upload File",
+    browse: "Browse",
+  },
+
+  store: {
+    store: "Store",
+    stores: "Stores",
+    storeSales: "Store Sales",
+  },
+
   userManagement: {
     editUser: "Edit User",
     addNewUser: "Add New User",
     exportExcel: "Export Excel",
     exportCsv: "Export Csv",
-    search: "Search",
     uploadAvatar: "Upload Avatar",
   },
 
@@ -47,6 +65,15 @@ const en = {
     area: "Area",
     taxCode: "Tax Code",
     confirmPassword: "Confirm Password",
+  },
+
+  storeInfo: {
+    id: "ID",
+    posCode: "POS Code",
+    storeName: "Store Name",
+    province: "Province",
+    partner: "Partner",
+    address: "Address",
   },
 
   popUp: {

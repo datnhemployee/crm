@@ -1,13 +1,14 @@
-import PopUp from "PopUp"
-import { Col, Form, Row, Space } from "antd"
+import PopUp from "components/PopUp"
+import { Form, Space } from "antd"
 import Assets from "asset"
 import Button from "components/Button"
 import ModalConfirm from "components/Modal/ModalConfirm"
 import ModalForm from "components/Modal/ModalForm"
+import DashboardScreen from "components/Screen/DashboardScreen"
 import Table from "components/Table"
 import {
   INPUT_LIST_RESET_PASSWORD,
-  INPUT_LIST_ADD_USER as INPUT_LIST_USER_PROFILE,
+  INPUT_LIST_USER_PROFILE,
   USER_COLUMN_LIST,
 } from "constants/list"
 import Language from "lang"
@@ -124,50 +125,42 @@ const UserManagement: React.FunctionComponent<UserManagementProps> = () => {
   )
 
   return (
-    <Space direction="vertical" size="large">
-      <Row>
-        <Col span={8}>
+    <DashboardScreen>
+      <DashboardScreen.Header>
+        <DashboardScreen.Header.Left>
           <Button type="action" onClick={onClickAddUser}>
             {Language.userManagement.addNewUser}
           </Button>
-        </Col>
+        </DashboardScreen.Header.Left>
 
-        <Col span={8} offset={8}>
-          <Row justify="end">
-            <Space>
-              <Button
-                type="action"
-                iconType="svg"
-                iconComponent={Assets.ExportExcel}
-              >
-                {Language.userManagement.exportExcel}
-              </Button>
+        <DashboardScreen.Header.Right>
+          <Button
+            type="action"
+            iconType="svg"
+            iconComponent={Assets.ExportExcel}
+          >
+            {Language.userManagement.exportExcel}
+          </Button>
 
-              <Button
-                type="action"
-                iconType="svg"
-                iconComponent={Assets.ExportCvs}
-              >
-                {Language.userManagement.exportCsv}
-              </Button>
+          <Button type="action" iconType="svg" iconComponent={Assets.ExportCvs}>
+            {Language.userManagement.exportCsv}
+          </Button>
 
-              <PopUp
-                title={Language.popUp.searchByName}
-                okText={Language.popUp.search}
-                cancelText={Language.popUp.clear}
-              >
-                <Button
-                  type="action"
-                  iconType="svg"
-                  iconComponent={Assets.SearchSvg}
-                >
-                  {Language.userManagement.search}
-                </Button>
-              </PopUp>
-            </Space>
-          </Row>
-        </Col>
-      </Row>
+          <PopUp
+            title={Language.popUp.searchByName}
+            okText={Language.popUp.search}
+            cancelText={Language.popUp.clear}
+          >
+            <Button
+              type="action"
+              iconType="svg"
+              iconComponent={Assets.SearchSvg}
+            >
+              {Language.action.search}
+            </Button>
+          </PopUp>
+        </DashboardScreen.Header.Right>
+      </DashboardScreen.Header>
 
       <Table columns={USER_COLUMNS_WITH_ACTIONS} dataSource={MOCK_USER_LIST} />
 
@@ -226,7 +219,7 @@ const UserManagement: React.FunctionComponent<UserManagementProps> = () => {
         onFinish={onFinishResetPassword}
         form={resetPasswordForm}
       />
-    </Space>
+    </DashboardScreen>
   )
 }
 

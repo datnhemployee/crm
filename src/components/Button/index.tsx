@@ -58,9 +58,7 @@ const Button: React.FunctionComponent<React.PropsWithChildren<ButtonProps>> = (
     default:
       return (
         <AntButton
-          {...props}
           onClick={props?.onClick}
-          type="text"
           shape="circle"
           icon={
             <Icon
@@ -71,6 +69,8 @@ const Button: React.FunctionComponent<React.PropsWithChildren<ButtonProps>> = (
             />
           }
           size="large"
+          {...props}
+          type="text"
         />
       )
   }

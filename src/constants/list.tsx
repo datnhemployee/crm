@@ -5,57 +5,68 @@ import Button from "components/Button"
 import Icon from "components/Icon"
 import ModalForm, { ModalFormProps } from "components/Modal/ModalForm"
 import Language from "lang"
-import { Store } from "model/store"
 import User from "model/user"
 import ROUTE_NAME from "routes/name"
 import Compare from "utils/compare"
 import Constants from "./constants"
 import Validation from "utils/validation"
+import { Store } from "model/store"
 
-export const STORE_COLUMN_LIST: ColumnsType<Store> = [
+export const STORE_COLUMN_LIST = [
   {
     title: "POS Code",
     dataIndex: "posCode",
     key: "storeColum-posCode",
     fixed: "left",
-    width: "100px",
+    width: "50px",
+    sorter: (source: Required<Store>, dest: Required<Store>) =>
+      Compare.ascendingString(source.posCode, dest.posCode),
   },
   {
     title: "Store Name",
     dataIndex: "storeName",
     key: "storeColum-storeName",
     fixed: "left",
-    width: "200px",
+    width: "100px",
+    sorter: (source: Required<Store>, dest: Required<Store>) =>
+      Compare.ascendingString(source.storeName, dest.storeName),
   },
   {
     title: "Partner",
     dataIndex: "partner",
     key: "storeColum-partner",
-    width: "200px",
+    width: "100px",
+    sorter: (source: Required<Store>, dest: Required<Store>) =>
+      Compare.ascendingString(source.partner, dest.partner),
   },
   {
     title: "Province",
     dataIndex: "province",
     key: "storeColum-province",
-    width: "200px",
+    width: "100px",
+    sorter: (source: Required<Store>, dest: Required<Store>) =>
+      Compare.ascendingString(source.province, dest.province),
   },
   {
     title: "Address",
     dataIndex: "address",
     key: "storeColum-address",
-    width: "800px",
+    width: "200px",
+    sorter: (source: Required<Store>, dest: Required<Store>) =>
+      Compare.ascendingString(source.partner, dest.partner),
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "storeColum-status",
-    width: "200px",
+    width: "50px",
+    fixed: "right",
   },
   {
     title: "Action",
     dataIndex: "action",
     key: "storeColum-action",
-    width: "100px",
+    width: "50px",
     fixed: "right",
   },
 ]
@@ -190,7 +201,7 @@ const PARAGRAPH_USER_INPUT_KEY_LIST = [
   Language.userProfile.currentAddress,
 ]
 
-export const INPUT_LIST_ADD_USER: ModalFormProps["inputList"] = Object.keys(
+export const INPUT_LIST_USER_PROFILE: ModalFormProps["inputList"] = Object.keys(
   Language.userProfile
 ).map((inputKey) => {
   const name = inputKey as keyof typeof Language.userProfile
@@ -236,6 +247,55 @@ export const INPUT_LIST_RESET_PASSWORD: ModalFormProps["inputList"] = [
     rules: [
       { required: true, message: Language.placeholder.thisFieldIsRequired },
       Validation.validateConfirmPassword,
+    ],
+  },
+]
+
+const REQUIRED_ADD_STORE_INPUT_KEY_LIST = Object.values(Language.storeInfo)
+const ADD_STORE_SELECT_KEY_LIST = [
+  Language.storeInfo.province,
+  Language.storeInfo.partner,
+]
+
+export const INPUT_LIST_ADD_STORE: ModalFormProps["inputList"] = Object.keys(
+  Language.storeInfo
+).map((inputKey) => {
+  const name = inputKey as keyof typeof Language.storeInfo
+  const label = Language.storeInfo[name]
+  return {
+    key: `addStoreInput-${name}`,
+    label,
+    name,
+    rules: REQUIRED_ADD_STORE_INPUT_KEY_LIST.includes(label)
+      ? [{ required: true, message: Language.placeholder.thisFieldIsRequired }]
+      : undefined,
+    inputType: ADD_STORE_SELECT_KEY_LIST.includes(label) ? "select" : undefined,
+    options: ADD_STORE_SELECT_KEY_LIST.includes(label) ? [] : undefined,
+  }
+})
+
+export const INPUT_LIST_SEARCH_STORE: ModalFormProps["inputList"] = [
+  {
+    key: `addStoreInput-${Language.obj.keyword}`,
+    label: Language.obj.keyword,
+    name: "keyword",
+  },
+  {
+    key: `addStoreInput-${Language.storeInfo.province}`,
+    label: Language.storeInfo.province,
+    name: "province",
+    inputType: "select",
+    options: [
+      /** Need to fulfill with response from Api */
+    ],
+  },
+  {
+    key: `addStoreInput-${Language.storeInfo.partner}`,
+    label: Language.storeInfo.partner,
+    name: "partner",
+    inputType: "select",
+    options: [
+      /** Need to fulfill with response from Api */
     ],
   },
 ]
