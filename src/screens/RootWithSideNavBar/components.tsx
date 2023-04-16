@@ -5,8 +5,8 @@ export const Screen = styled(Layout)`
   overflow: hidden;
   height: 100vh;
 `
-export const Sider = styled(Layout.Sider)`
-  overflow-y: scroll;
+export const HeaderWrapper = styled(Layout.Header)`
+  padding-inline: 0px;
 `
 export const Content = styled(Layout)`
   height: 100%;

@@ -1,5 +1,8 @@
+import App from "./app-icon.png"
+import Avatar from "./avatar.png"
 import ActualPerformanceIcon from "./actual-performance.png"
 import AppChecking from "./app-checking.png"
+import Bell from "./icon-bell.png"
 import Box from "./box.png"
 import Chat from "./chat.png"
 import Commission from "./commission.png"
@@ -14,6 +17,7 @@ import TargetPerformance from "./target-performance.png"
 import ResetPassword from "./reset-password.png"
 import UserActive from "./user-active.png"
 import UserDeactive from "./user-deactive.png"
+import VietNameFlag from "./vietnam-flag.png"
 import { ReactComponent as ResetPasswordSvg } from "./reset-password.svg"
 import { ReactComponent as UserActiveSvg } from "./user-active.svg"
 import { ReactComponent as UserDeactiveSvg } from "./user-deactive.svg"
@@ -23,9 +27,12 @@ import { ReactComponent as ExportCvs } from "./export-csv.svg"
 import { ReactComponent as SearchSvg } from "./search.svg"
 
 const Assets = {
+  App,
+  Avatar,
   ActualPerformanceSvgIcon,
   ActualPerformanceIcon,
   AppChecking,
+  Bell,
   Box,
   Chat,
   Commission,
@@ -40,6 +47,7 @@ const Assets = {
   TargetPerformance,
   UserActive,
   UserDeactive,
+  VietNameFlag,
 
   ResetPasswordSvg,
   UserActiveSvg,

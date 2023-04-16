@@ -1,8 +1,10 @@
-import React from "react"
 import { Layout } from "antd"
+import React from "react"
 import { Outlet } from "react-router-dom"
+import Header from "./Header"
 import SideBar from "./Sidebar"
-import { Content, Screen, Sider } from "./components"
+import { Content, Screen } from "./components"
+import { forwardCollapse } from "./context"
 
 type RootWithSideNavBarProps = {}
 
@@ -10,15 +12,10 @@ const RootWithSideNavBar: React.FunctionComponent<
   RootWithSideNavBarProps
 > = () => (
   <Screen>
-    <Layout.Header>
-      <div className="logo" />
-    </Layout.Header>
+    <Header />
 
     <Layout>
-      <Sider collapsible trigger={null}>
-        <SideBar />
-      </Sider>
-
+      <SideBar />
       <Content>
         <Outlet />
       </Content>
@@ -26,4 +23,4 @@ const RootWithSideNavBar: React.FunctionComponent<
   </Screen>
 )
 
-export default RootWithSideNavBar
+export default forwardCollapse(RootWithSideNavBar)
