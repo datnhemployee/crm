@@ -18,6 +18,8 @@ import ResetPassword from "./reset-password.png"
 import UserActive from "./user-active.png"
 import UserDeactive from "./user-deactive.png"
 import VietNameFlag from "./vietnam-flag.png"
+
+import { ReactComponent as TrashSvg } from "./trash.svg"
 import { ReactComponent as ResetPasswordSvg } from "./reset-password.svg"
 import { ReactComponent as UserActiveSvg } from "./user-active.svg"
 import { ReactComponent as UserDeactiveSvg } from "./user-deactive.svg"
@@ -49,6 +51,7 @@ const Assets = {
   UserDeactive,
   VietNameFlag,
 
+  TrashSvg,
   ResetPasswordSvg,
   UserActiveSvg,
   UserDeactiveSvg,

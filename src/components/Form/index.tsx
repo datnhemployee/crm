@@ -84,7 +84,7 @@ const InputList = {
 
 export type FormProps = Pick<
   React.ComponentProps<typeof AntForm>,
-  "onFinish" | "onFinishFailed" | "form"
+  "onFinish" | "onFinishFailed" | "form" | "labelAlign" | "defaultValue"
 > & {
   renderHeader?: React.FunctionComponent<any>
   renderFooter?: React.FunctionComponent<any>
@@ -111,11 +111,9 @@ const Form: TForm = forwardRef((props, ref) => {
       ref={ref}
       name="basic"
       labelCol={{ span: 8 }}
-      onFinish={props?.onFinish}
-      onFinishFailed={props?.onFinishFailed}
       autoComplete="off"
       size="large"
-      form={props?.form}
+      {...(props as React.ComponentProps<typeof AntForm>)}
     >
       {props?.renderHeader?.({})}
 

@@ -5,12 +5,16 @@ import Button from "components/Button"
 import Icon from "components/Icon"
 import ModalForm, { ModalFormProps } from "components/Modal/ModalForm"
 import Language from "lang"
+import { TProduct } from "model/product"
+import { TScheme } from "model/scheme"
+import { Store } from "model/store"
 import User from "model/user"
 import ROUTE_NAME from "routes/name"
 import Compare from "utils/compare"
-import Constants from "./constants"
 import Validation from "utils/validation"
-import { Store } from "model/store"
+import Constants from "./constants"
+import { TAssigningProduct } from "model/assigningProduct"
+import Text from "components/Typography/Text"
 
 export const STORE_COLUMN_LIST = [
   {
@@ -138,6 +142,21 @@ export const USER_COLUMN_LIST: ColumnsType<any> = [
 ]
 
 export const SIDEBAR: Required<MenuProps>["items"] = [
+  {
+    key: ROUTE_NAME.SALE_PERFORMANCE,
+    icon: <Icon src={Assets.SalePerformance} />,
+    label: Language.sidebar.salesPerformance,
+  },
+  {
+    key: ROUTE_NAME.TARGET_PERFORMANCE,
+    icon: <Icon src={Assets.TargetPerformance} />,
+    label: Language.sidebar.targetPerformance,
+  },
+  {
+    key: ROUTE_NAME.ACTUAL_PERFORMANCE,
+    icon: <Icon src={Assets.ActualPerformanceIcon} />,
+    label: Language.sidebar.actualPerformance,
+  },
   {
     key: ROUTE_NAME.APP_CHECKING,
     icon: <Icon src={Assets.AppChecking} />,
@@ -297,5 +316,339 @@ export const INPUT_LIST_SEARCH_STORE: ModalFormProps["inputList"] = [
     options: [
       /** Need to fulfill with response from Api */
     ],
+  },
+]
+
+export const SCHEME_COLUMN_LIST: ColumnsType<any> = [
+  {
+    title: "Scheme Group",
+    dataIndex: "masterSchemeGroupName",
+    key: "storeColum-masterSchemeGroupName",
+    fixed: "left",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingString(
+        source.masterSchemeGroupName,
+        dest.masterSchemeGroupName
+      ),
+  },
+  {
+    title: "Scheme Id",
+    dataIndex: "masterSchemeId",
+    key: "storeColum-masterSchemeId",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingNumber(source.masterSchemeId, dest.masterSchemeId),
+  },
+  {
+    title: "Scheme Desc",
+    dataIndex: "masterSchemeName",
+    key: "storeColum-masterSchemeName",
+    width: "100px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingString(source.masterSchemeName, dest.masterSchemeName),
+  },
+  {
+    title: "Min Amount",
+    dataIndex: "minLoanAmount",
+    key: "storeColum-minLoanAmount",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingNumber(source.minLoanAmount, dest.minLoanAmount),
+  },
+  {
+    title: "Maxs Amount",
+    dataIndex: "maxLoanAmount",
+    key: "storeColum-maxLoanAmount",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingNumber(source.maxLoanAmount, dest.maxLoanAmount),
+  },
+  {
+    title: "Tenure Min",
+    dataIndex: "minTenure",
+    key: "storeColum-minTenure",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingNumber(source.minTenure, dest.minTenure),
+  },
+  {
+    title: "Tenure Max",
+    dataIndex: "maxTenure",
+    key: "storeColum-maxTenure",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingNumber(source.maxTenure, dest.maxTenure),
+  },
+  {
+    title: "Start Date",
+    dataIndex: "startDate",
+    key: "storeColum-startDate",
+    width: "50px",
+    sorter: (source: Required<TScheme>, dest: Required<TScheme>) =>
+      Compare.ascendingString(source.startDate, dest.startDate),
+  },
+]
+
+export const PRODUCT_COLUMN_LIST = [
+  {
+    title: "Name",
+    dataIndex: "productName",
+    key: "storeColum-productName",
+    width: "100px",
+    sorter: (source: Required<TProduct>, dest: Required<TProduct>) =>
+      Compare.ascendingString(source.productName, dest.productName),
+  },
+  {
+    title: "Product Type",
+    dataIndex: "masterProductCategoryDescription",
+    key: "storeColum-masterProductCategoryDescription",
+    width: "50px",
+    sorter: (source: Required<TProduct>, dest: Required<TProduct>) =>
+      Compare.ascendingString(
+        source.masterProductCategoryDescription,
+        dest.masterProductCategoryDescription
+      ),
+  },
+  {
+    title: "Brand",
+    dataIndex: "productBrandName",
+    key: "storeColum-productBrandName",
+    width: "50px",
+    sorter: (source: Required<TProduct>, dest: Required<TProduct>) =>
+      Compare.ascendingString(source.productBrandName, dest.productBrandName),
+  },
+  {
+    title: "Type",
+    dataIndex: "",
+    key: "storeColum-isMainProduct",
+    width: "50px",
+    sorter: (source: Required<TProduct>, dest: Required<TProduct>) =>
+      Compare.descendingBoolean(source.isMainProduct, dest.isMainProduct),
+  },
+  {
+    title: "Action",
+    dataIndex: "",
+    key: "storeColum-action",
+    width: "24px",
+  },
+]
+
+export const PROMOTION_COLUMN_LIST = [
+  {
+    title: "Name",
+    dataIndex: "",
+    key: "storeColum-name",
+    width: "100px",
+  },
+  {
+    title: "Product Type",
+    dataIndex: "",
+    key: "storeColum-productType",
+    width: "100px",
+  },
+  {
+    title: "Brand",
+    dataIndex: "",
+    key: "storeColum-brand",
+    width: "50px",
+  },
+  {
+    title: "Type",
+    dataIndex: "",
+    key: "storeColum-type",
+    width: "50px",
+  },
+  {
+    title: "Cost Min",
+    dataIndex: "",
+    key: "storeColum-costMin",
+    width: "50px",
+  },
+  {
+    title: "Cost Max",
+    dataIndex: "",
+    key: "storeColum-costMax",
+    width: "50px",
+  },
+  {
+    title: "Action",
+    dataIndex: "",
+    key: "storeColum-action",
+    width: "24px",
+  },
+]
+
+export const SALES_CODE_COLUMN_LIST = [
+  {
+    title: "Sales Code",
+    dataIndex: "userName",
+    key: "storeColum-salesCode",
+    width: "50px",
+  },
+  {
+    title: "Name",
+    dataIndex: "fullName",
+    key: "storeColum-name",
+    width: "50px",
+  },
+  {
+    title: "Current Address",
+    dataIndex: "currentAddress",
+    key: "storeColum-currentAddress",
+    width: "100px",
+  },
+  {
+    title: "Action",
+    dataIndex: "",
+    key: "storeColum-action",
+    width: "24px",
+  },
+]
+
+export const INPUT_LIST_MAP_USER: ModalFormProps["inputList"] = [
+  {
+    style: { marginRight: 0, marginLeft: 0 },
+    key: `mapStoreInput-${Language.storeInfo.storeName}`,
+    label: Language.storeInfo.storeName,
+    name: "storeName",
+    disabled: true,
+    labelCol: { span: 4 },
+  },
+]
+
+export const COLUMN_LIST_SALE = [
+  {
+    title: "User Name",
+    dataIndex: "userName",
+    key: "mapUser-userName",
+    width: "50px",
+  },
+  {
+    title: "Full Name",
+    dataIndex: "fullName",
+    key: "mapUser-fullName",
+    width: "100px",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "mapUser-email",
+    width: "50px",
+  },
+  {
+    title: "Phone Number",
+    dataIndex: "phone",
+    key: "mapUser-phone",
+    width: "50px",
+  },
+  {
+    title: "Current Address",
+    dataIndex: "currentAddress",
+    key: "mapUser-currentAddress",
+    width: "100px",
+  },
+]
+
+export const INPUT_LIST_MAP_PRODUCT: ModalFormProps["inputList"] = [
+  {
+    style: { marginRight: 0, marginLeft: 0 },
+    key: `mapStoreInput-${Language.storeInfo.posCode}`,
+    label: Language.storeInfo.posCode,
+    name: "posCode",
+    disabled: true,
+    labelCol: { span: 4 },
+  },
+  {
+    style: { marginRight: 0, marginLeft: 0 },
+    key: `mapStoreInput-${Language.storeInfo.storeName}`,
+    label: Language.storeInfo.storeName,
+    name: "storeName",
+    disabled: true,
+    labelCol: { span: 4 },
+  },
+]
+
+export const COLUMN_LIST_ASSIGNING_PRODUCT = [
+  {
+    title: "name",
+    dataIndex: "name",
+    key: "mapUser-name",
+    width: "100px",
+  },
+  {
+    title: "Product Type",
+    dataIndex: "masterProductCategoryDescription",
+    key: "mapUser-masterProductCategoryDescription",
+    width: "50px",
+  },
+  {
+    title: "Brand",
+    dataIndex: "productBrandName",
+    key: "mapUser-productBrandName",
+    width: "50px",
+  },
+  {
+    title: "Type",
+    dataIndex: "",
+    key: "mapUser-isMain",
+    width: "50px",
+    render: (_: any, product: TAssigningProduct) => (
+      <Text>{product.isMain ? "Main" : "Accessories"}</Text>
+    ),
+  },
+  {
+    title: "Status",
+    dataIndex: "",
+    key: "mapUser-status",
+    width: "50px",
+    render: (_: any, product: TAssigningProduct) => (
+      <Text>{product.status === 1 ? "Active" : "Deactive"}</Text>
+    ),
+  },
+]
+
+export const COLUMN_LIST_MAP_PROMOTION_PRODUCT = [
+  {
+    title: "Name",
+    dataIndex: "productName",
+    key: "mapUser-productName",
+    width: "50px",
+  },
+  {
+    title: "Product Type",
+    dataIndex: "masterProductCategoryDescription",
+    key: "mapUser-masterProductCategoryDescription",
+    width: "50px",
+  },
+  {
+    title: "Brand",
+    dataIndex: "productBrandName",
+    key: "mapUser-productBrandName",
+    width: "50px",
+  },
+  {
+    title: "Type",
+    dataIndex: "",
+    key: "mapUser-isMainProduct",
+    width: "50px",
+  },
+  {
+    title: "Status",
+    dataIndex: "",
+    key: "mapUser-productStatus",
+    width: "50px",
+  },
+  {
+    title: "Cost Min",
+    dataIndex: "",
+    key: "mapUser-costMin",
+    width: "100px",
+  },
+  {
+    title: "Cost Max",
+    dataIndex: "",
+    key: "mapUser-costMax",
+    width: "100px",
   },
 ]

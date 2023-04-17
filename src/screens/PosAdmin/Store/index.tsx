@@ -1,5 +1,5 @@
 import { UploadOutlined } from "@ant-design/icons"
-import { Switch as AntSwitch, Upload } from "antd"
+import { Switch as AntSwitch, Typography, Upload } from "antd"
 import { useForm } from "antd/es/form/Form"
 import Assets from "asset"
 import Button from "components/Button"
@@ -20,11 +20,15 @@ import MOCK_PROVINCE from "mock/province"
 import { MOCK_STORE_LIST } from "mock/store"
 import { Store } from "model/store"
 import React, { useMemo, useState } from "react"
+import { Outlet, useNavigate } from "react-router-dom"
+import ROUTE_NAME from "routes/name"
 import { Item, Option } from "types"
 
 type StoresProps = {}
 
 const Stores: React.FunctionComponent<StoresProps> = () => {
+  const navigate = useNavigate()
+
   const [isOpenAddStore, setOpenAddStore] = useState(false)
   const [formAddStore] = useForm()
 
@@ -54,6 +58,10 @@ const Stores: React.FunctionComponent<StoresProps> = () => {
   const onFinishEditStore = () => {
     formEditStore.resetFields()
     setOpenEditStore(false)
+  }
+
+  const onClickStore = (store: Store) => () => {
+    navigate(ROUTE_NAME.POS_ADMIN_STORE_DETAIL)
   }
 
   const inputListAddStore = useMemo(() => {
@@ -150,7 +158,13 @@ const Stores: React.FunctionComponent<StoresProps> = () => {
   const columnList = STORE_COLUMN_LIST.map((column) => ({
     ...column,
     render:
-      column.key === "storeColum-status"
+      column.key === "storeColum-posCode"
+        ? (_: any, store: Store) => (
+            <Typography.Link onClick={onClickStore(store)}>
+              {store.posCode}
+            </Typography.Link>
+          )
+        : column.key === "storeColum-status"
         ? (_: any, store: Store) => <AntSwitch defaultChecked={store.status} />
         : column.key === "storeColum-action"
         ? (_: any, store: Store) => (
@@ -249,6 +263,8 @@ const Stores: React.FunctionComponent<StoresProps> = () => {
         onFinish={onFinishEditStore}
         form={formEditStore}
       />
+
+      <Outlet />
     </DashboardScreen>
   )
 }

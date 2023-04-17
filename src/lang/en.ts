@@ -19,6 +19,8 @@ const en = {
 
   obj: {
     keyword: "Keyword",
+    product: "Product",
+    sale: "Sale",
   },
 
   action: {
@@ -28,12 +30,20 @@ const en = {
     search: "Search",
     uploadFile: "Upload File",
     browse: "Browse",
+    delete: 'Delete "{{obj}}"',
   },
 
   store: {
     store: "Store",
     stores: "Stores",
     storeSales: "Store Sales",
+    general: "General",
+    schemeGroup: "Scheme Group",
+    schemeDesc: "Scheme Desc",
+    productType: "Product Type",
+    brand: "Brand",
+    costMin: "Cost Min",
+    costMax: "Cost Max",
   },
 
   userManagement: {
@@ -81,17 +91,19 @@ const en = {
     deactivateUser: "Deactivate User",
     activateUser: "Activate User",
     searchByName: "Search by Name",
-    exampleByName: "Ex. Your Name",
+    exampleByName: "Ex. Keyword",
     areYouSureYouWantToDeactivate:
       "Are you sure you want to Deactivate {{fullName}} ?",
     areYouSureYouWantToActivate:
       "Are you sure you want to Activate {{fullName}} ?",
+    areYouSureYouWantToDelete: `Are you sure you want to delete "{{obj}}"`,
     search: "Search",
     clear: "Clear",
     cancel: "Cancel",
     deactivate: "Deactivate",
     activate: "Activate",
     save: "Save",
+    delete: "Delete",
   },
 
   placeholder: {

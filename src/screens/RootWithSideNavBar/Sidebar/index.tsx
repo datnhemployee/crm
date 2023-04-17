@@ -14,7 +14,6 @@ type SideBarProps = {}
 const SideBar: React.FunctionComponent<SideBarProps> = () => {
   const { isCollapsed } = useContext(CollapseContext)
   const hook = useHook()
-  console.log("isCollapsed", isCollapsed)
 
   return (
     <Sider collapsible trigger={null} collapsed={isCollapsed}>

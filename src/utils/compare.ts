@@ -1,3 +1,5 @@
+const ascendingNumber = (source: number, dest: number) => source - dest
+
 const ascendingString = (source: string, dest: string) =>
   source.length - dest.length
 
@@ -16,6 +18,7 @@ const descendingBoolean = (source: boolean, dest: boolean) => {
 const Compare = {
   ascendingString,
   descendingBoolean,
+  ascendingNumber,
 }
 
 export default Compare

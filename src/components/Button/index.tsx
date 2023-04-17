@@ -22,9 +22,7 @@ const Button: React.FunctionComponent<React.PropsWithChildren<ButtonProps>> = (
     case "action":
       return (
         <AntButton
-          {...props}
           onClick={props?.onClick}
-          type="primary"
           icon={
             !!props?.iconComponent && (
               <Icon
@@ -36,6 +34,8 @@ const Button: React.FunctionComponent<React.PropsWithChildren<ButtonProps>> = (
             )
           }
           size="large"
+          {...props}
+          type="primary"
         >
           {props.children}
         </AntButton>
@@ -44,11 +44,11 @@ const Button: React.FunctionComponent<React.PropsWithChildren<ButtonProps>> = (
     case "status":
       return (
         <AntButton
-          {...props}
           onClick={props?.onClick}
-          type="primary"
           shape="round"
           size="large"
+          {...props}
+          type="primary"
         >
           {props.children}
         </AntButton>

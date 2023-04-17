@@ -11,4 +11,5 @@ export const HeaderWrapper = styled(Layout.Header)`
 export const Content = styled(Layout)`
   height: 100%;
   padding: 24px;
+  overflow-y: scroll;
 `

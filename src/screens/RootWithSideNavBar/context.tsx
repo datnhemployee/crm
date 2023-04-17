@@ -15,11 +15,7 @@ export const forwardCollapse =
     const [isCollapsed, setCollapsed] = useState(DEFAULT_COLLAPSED)
 
     const toggleCollapsed = () => {
-      setCollapsed((prevIsCollapsed) => {
-        console.log("toggleCollapsed", prevIsCollapsed)
-
-        return !prevIsCollapsed
-      })
+      setCollapsed((prevIsCollapsed) => !prevIsCollapsed)
     }
 
     return (
