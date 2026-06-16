@@ -1,3 +1,20 @@
+# Latest
+# From 16 Jun 2026
+```bash
+
+## clear cache and old node modules
+rm -rf node_modules package-lock.json
+
+## install latest @types/node because [Ant Design 5.x is compatible with Node.js v16 or above](https://ant.design/docs/react/getting-started)
+npm install -D @types/node@22
+
+## React 18 's safe for Ant Design
+npm install react@18.3.1 react-dom@18.3.1
+
+npm install -D vite @vitejs/plugin-react
+```
+
+# Before 16 Jun 2026
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +61,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+

@@ -19,14 +19,14 @@ import UserActive from "./user-active.png"
 import UserDeactive from "./user-deactive.png"
 import VietNameFlag from "./vietnam-flag.png"
 
-import { ReactComponent as TrashSvg } from "./trash.svg"
-import { ReactComponent as ResetPasswordSvg } from "./reset-password.svg"
-import { ReactComponent as UserActiveSvg } from "./user-active.svg"
-import { ReactComponent as UserDeactiveSvg } from "./user-deactive.svg"
-import { ReactComponent as ActualPerformanceSvgIcon } from "./sale-performance.svg"
-import { ReactComponent as ExportExcel } from "./export-excel.svg"
-import { ReactComponent as ExportCvs } from "./export-csv.svg"
-import { ReactComponent as SearchSvg } from "./search.svg"
+import TrashSvg from "./trash.svg?react"
+import ResetPasswordSvg from "./reset-password.svg?react"
+import UserActiveSvg from "./user-active.svg?react"
+import UserDeactiveSvg from "./user-deactive.svg?react"
+import ActualPerformanceSvgIcon from "./sale-performance.svg?react"
+import ExportExcel from "./export-excel.svg?react"
+import ExportCvs from "./export-csv.svg?react"
+import SearchSvg from "./search.svg?react"
 
 const Assets = {
   App,
