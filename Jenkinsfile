@@ -12,6 +12,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo '🚀 Start Building Docker Image...'
+                // Thêm lệnh chmod trực tiếp cho file socket ngay bên trong container Jenkins
+                sh 'chmod 666 /var/run/docker.sock'
                 // Chạy chính cái file build script của bạn tự động bên trong Jenkins
                 sh 'sh ./scripts/docker-build.sh'
             }
