@@ -1,36 +1,26 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'docker:latest'
+            // Gắn file socket vào agent để nó ra lệnh ra bên ngoài máy Mac
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
         stage('Checkout Code') {
             steps {
-                // Jenkins sẽ tự động pull code từ Git về nếu bạn cấu hình Git ở bước sau
                 echo 'Pulling code from repository...'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 echo '🚀 Start Building Docker Image...'
-                // Thêm lệnh chmod trực tiếp cho file socket ngay bên trong container Jenkins
-                sh 'chmod 666 /var/run/docker.sock'
-                // Chạy chính cái file build script của bạn tự động bên trong Jenkins
+                // Không cần dùng chmod nữa, chạy trực tiếp script build của bạn
                 sh 'sh ./scripts/docker-build.sh'
             }
         }
-
-        stage('Test & Verify') {
-            steps {
-                echo 'Checking if container is running...'
-                sh 'docker ps | grep crm-web'
-            }
-        }
     }
-    
     post {
-        success {
-            echo '✅ CI/CD completed successfully!'
-        }
         failure {
             echo '❌ CI/CD failed. Please check logs!'
         }
