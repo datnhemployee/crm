@@ -162,6 +162,8 @@ const UserManagement: React.FunctionComponent<UserManagementProps> = () => {
         </DashboardScreen.Header.Right>
       </DashboardScreen.Header>
 
+      <div>New updates to testing Jenkins</div>
+
       <Table columns={USER_COLUMNS_WITH_ACTIONS} dataSource={MOCK_USER_LIST} />
 
       <ModalForm
